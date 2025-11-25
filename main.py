@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import pickle
 import pandas as pd
 
@@ -7,6 +8,7 @@ model = pickle.load(open("AirQuality_Model.pkl", "rb"))
 encoder = pickle.load(open("AirQuality_LabelEncoder.pkl", "rb"))
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/", methods=["GET"])
 def home():
